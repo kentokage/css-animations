@@ -1,0 +1,185 @@
+body {
+    background-color: lightblue;
+    text-align: center;
+}
+
+img {
+    /* height: 300px;
+    width: 600px; */
+    /* transform: translate(-200px, 200px); */
+    /* transform: scaleY(0.5) */
+
+    /* turning into the page, like a rotiserrie */
+    /* transform: rotateY(100deg);   */
+
+    /* Z is an axis runs through middle towards you */
+    /* transform: rotateZ(-90deg); */
+
+    /* * order matters */
+    /* so it will rotate first, than translate Y (moves right), then scales */
+    /* transform: rotateZ(-90deg) translateY(200px) scale(2); */
+}
+
+.circle {
+    background-color: pink;
+    border-radius: 50px;
+    height: 100px;
+    width: 100px;
+    color: white;
+    cursor: pointer;
+    margin: 60px auto;
+    line-height: 0px;
+    vertical-align: middle;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    /* affects everything you change on this element */
+    /* transition: 1s; */
+
+    /* only apply to specific property */
+    /* 1st property is duration, 2nd is delay, 3rd property is timing function */
+    transition: background 1s, transform 1s 0s ease-out;
+}
+
+.circle:hover {
+    background-color: salmon;
+    transform: rotate(360deg);
+}
+
+/*// BASE STYLES //*/
+
+html,
+body {
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+    margin: 0;
+}
+
+.grass,
+.sky,
+.road {
+    position: relative;
+}
+
+.sky {
+    height: 25%;
+    background: skyblue;
+}
+
+.grass {
+    height: 20%;
+    background: seagreen;
+}
+
+.road {
+    height: 30%;
+    background: dimgrey;
+    box-sizing: border-box;
+    border-top: 10px solid grey;
+    border-bottom: 10px solid grey;
+    width: 100%;
+}
+
+.lines {
+    box-sizing: border-box;
+    border: 5px dashed #fff;
+    height: 0px;
+    width: 100%;
+    position: absolute;
+    top: 45%;
+}
+
+/*// ELEMENTS TO ANIMATE //*/
+.mario {
+    position: absolute;
+    top: -40px;
+    left: 0px;
+    /* animation-name: drive;
+    animation-duration: 5s; */
+    /* animation-fill-mode, what to do outside of the animation when it is done */
+    /* forwards: stays at the last properties, defaults to none */
+    /* backwards starts at the from properties */
+    /* both = backwards & forwards */
+    /* animation-fill-mode: both;
+    animation-delay: 1s;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear; */
+
+    /* animation shorthand and chaining */
+    animation: drive 5s 1s both infinite linear,
+        jump 0.3s 2s ease,
+        jump 0.3s 4s ease;
+}
+
+.luigi {
+    position: absolute;
+    top: 100px;
+    left: 0px;
+    animation-name: drive;
+    animation-duration: 6s;
+    animation-delay: 1s;
+    animation-fill-mode: both;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+    animation-timing-function: linear;
+}
+
+/*// KEYFRAMES //*/
+
+.cloud {
+    position: absolute;
+}
+
+.cloud:nth-child(1) {
+    width: 200px;
+    top: 100px;
+    opacity: 0.5;
+    /* shorthand */
+    /* keyframe duration timing iteration-count direction */
+    /* first number is always the duration, second number is delay, doesn't matter which order */
+    animation: wind 80s linear infinite reverse;
+}
+
+.cloud:nth-child(2) {
+    width: 300px;
+    top: 0;
+    animation: wind 50s linear infinite reverse 1s;
+}
+
+@keyframes drive {
+    from {
+        transform: translateX(-120px);
+    }
+
+    to {
+        transform: translateX(2120px)
+    }
+}
+
+@keyframes wind {
+    from {
+        left: -300px;
+    }
+
+    to {
+        left: 100%
+    }
+}
+
+/* another way to do states */
+/* use percentages, timing fractions */
+@keyframes jump {
+    0% {
+        top: -40px;
+    }
+
+    50% {
+        top: -100px;
+    }
+
+    100% {
+        top: -40px;
+    }
+}

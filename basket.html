@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <title>Basket Example</title>
+    <link rel="stylesheet" type="text/css" href="popupBasketStyles.css">
+    <script src="https://code.jquery.com/jquery-1.12.3.min.js"
+        integrity="sha256-aaODHAgvwQW1bFOGXMeX+pC4PZIPsvn2h1sArYOhgXQ=" crossorigin="anonymous"></script>
+</head>
+
+<body class="basket">
+    <header>
+        <h1>Sports Clothing</h1>
+        <div class="basket-icon"><img src="img/cloud.png"></div>
+    </header>
+    <ul class="products">
+        <li>
+            <img src="img/cloud.png">
+            <h2>Green T-Shirt</h2>
+            <button>Add to Basket</button>
+        </li>
+        <li>
+            <img src="img/hero_chara_mario_update_pc.png">
+            <h2>Yellow T-Shirt</h2>
+            <button>Add to Basket</button>
+        </li>
+        <li>
+            <img src="img/luigi.png">
+            <h2>Pink T-Shirt</h2>
+            <button>Add to Basket</button>
+        </li>
+        <li>
+            <img src="img/mario-pose3.png">
+            <h2>Green T-Shirt</h2>
+            <button>Add to Basket</button>
+        </li>
+        <li style="display: flex; flex-direction: column">
+            <img class="front" src="img/mario.png">
+            <img class="back" src="img/luigi.png">
+            <h2>Yellow T-Shirt</h2>
+            <button>Add to Basket</button>
+        </li>
+        <li>
+            <img src="img/Switch_SuperMarioMaker2_char_artwork_copy.jpg">
+            <h2>Pink T-Shirt</h2>
+            <button>Add to Basket</button>
+        </li>
+    </ul>
+    <script>
+        const buttons = document.querySelectorAll("button");
+        buttons.forEach(button => {
+            button.addEventListener('click', function () {
+                let imgClone = button.closest("li").querySelector("img").cloneNode();
+                imgClone.classList.add("zoom");
+                const body = document.querySelector("body");
+                body.appendChild(imgClone);
+                setTimeout(function () {
+                    body.removeChild(imgClone);
+                }, 1000);
+            })
+        });
+    </script>
+</body>
+
+</html>
